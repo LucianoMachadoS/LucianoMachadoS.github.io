@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luciano Machado · Portfólio</title>
+<meta name="description" content="Portfólio de Luciano Machado, desenvolvedor full stack júnior: Node.js, Express e React.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna editorial larga; o projeto principal ganha um bloco próprio com o "terminal" de endpoints; os commits viram uma linha do tempo real. */
+:root{
+  --bg:#f3f5f4;
+  --surface:#ffffff;
+  --ink:#16201d;
+  --muted:#5b6964;
+  --line:#d5dcd9;
+  --river:#1f6f8b;      /* azul do Tietê */
+  --river-soft:#dcecf1;
+  --sun:#d79a1e;        /* destaque de data */
+  --code-bg:#13201f;
+  --code-ink:#d9e6e2;
+  --code-dim:#7f9a93;
+  --display:"Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1615; --surface:#162120; --ink:#e6eeeb; --muted:#93a59f; --line:#26353a;
+    --river:#5fb3cf; --river-soft:#17323b; --sun:#e9b54a;
+    --code-bg:#0a1110; --code-ink:#d9e6e2; --code-dim:#6f8a83; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1615; --surface:#162120; --ink:#e6eeeb; --muted:#93a59f; --line:#26353a;
+  --river:#5fb3cf; --river-soft:#17323b; --sun:#e9b54a;
+  --code-bg:#0a1110; --code-ink:#d9e6e2; --code-dim:#6f8a83; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+.wrap{max-width:68rem;margin:0 auto;padding-inline:clamp(1rem,4vw,2.5rem);padding-block:0 4rem}
+a{color:var(--river);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--river);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+.label{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* topo */
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1.25rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.top .handle{font-family:var(--mono);font-size:.875rem;color:var(--ink);text-decoration:none}
+.top nav{display:flex;gap:1.25rem;flex-wrap:wrap}
+.top nav a{color:var(--muted);text-decoration:none;font-size:.9375rem}
+.top nav a:hover{color:var(--river)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);padding-block:clamp(3rem,8vw,5.5rem) clamp(2.5rem,6vw,4rem);align-items:end}
+.hero h1{font-size:clamp(2.75rem,8vw,5.25rem);font-weight:700;letter-spacing:-.025em}
+.hero h1 span{color:var(--river)}
+.hero .role{font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.5rem);font-weight:500;margin-top:1rem}
+.hero p.lead{color:var(--muted);max-width:38rem;margin:1.25rem 0 0}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.1rem;border-radius:999px;font-weight:600;font-size:.9375rem;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--river);color:var(--river)}
+.btn.primary:hover{background:var(--river);color:var(--surface)}
+.facts{display:grid;gap:1rem;font-size:.9375rem}
+.facts div{display:grid;gap:.15rem;padding-top:.85rem;border-top:1px solid var(--line)}
+.facts strong{font-weight:500}
+
+/* seções */
+section{padding-block:clamp(2.5rem,6vw,4rem);border-top:1px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.sec-head h2{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:600;letter-spacing:-.015em}
+
+/* projeto principal */
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.feature h3{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:600}
+.feature p{color:var(--muted);margin:.75rem 0 0;max-width:36rem}
+.feature ul{margin:1.25rem 0 0;padding:0;list-style:none;display:grid;gap:.6rem}
+.feature li{padding-left:1.25rem;position:relative}
+.feature li::before{content:"";position:absolute;left:0;top:.7em;width:.5rem;height:2px;background:var(--river)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.tag{font-family:var(--mono);font-size:.75rem;padding:.25rem .6rem;border-radius:999px;background:var(--river-soft);color:var(--ink)}
+.links{display:flex;gap:1.25rem;margin-top:1.5rem;flex-wrap:wrap;font-weight:500}
+
+.term{background:var(--code-bg);color:var(--code-ink);border-radius:12px;font-family:var(--mono);font-size:.8125rem;overflow:hidden;min-width:0}
+.term .bar{display:flex;align-items:center;gap:.4rem;padding:.65rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);color:var(--code-dim)}
+.term .bar i{width:.6rem;height:.6rem;border-radius:50%;background:#3b4a47;display:inline-block}
+.term .bar span{margin-left:.5rem}
+.term .body{overflow-x:auto;padding:1rem}
+.term table{border-collapse:collapse;width:100%;min-width:26rem}
+.term td{padding:.32rem .75rem .32rem 0;white-space:nowrap;vertical-align:top}
+.m{font-weight:500}
+.m.get{color:#7cc7a8}.m.post{color:#e9b54a}.m.put{color:#7fb6e6}.m.del{color:#ef8f84}
+.term .lock{color:var(--code-dim)}
+.term .foot{padding:.75rem 1rem;border-top:1px solid rgba(255,255,255,.07);color:var(--code-dim)}
+
+/* outros projetos */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.4rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.card .label{color:var(--river)}
+.card h3{font-size:1.3rem;font-weight:600}
+.card p{margin:0;color:var(--muted);font-size:.9375rem;flex:1}
+.card .tags{margin-top:.25rem}
+.card a{font-weight:500;font-size:.9375rem}
+.card-links{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;margin-top:.25rem}
+a.live{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .75rem;border-radius:999px;background:var(--river);color:var(--surface);text-decoration:none;font-size:.875rem;font-weight:600}
+a.live::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:#7cc7a8;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+a.live:hover{filter:brightness(1.1)}
+a.live small{font-weight:400;opacity:.85;font-size:.75rem}
+.private-note{margin:1.5rem 0 0;padding:.75rem 1rem;border:1px dashed var(--line);border-radius:10px;font-size:.9375rem;color:var(--muted);max-width:36rem}
+.live-note{font-size:.8125rem;color:var(--muted);margin:.75rem 0 0}
+
+/* linha do tempo */
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.timeline li{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:1.25rem;padding-block:1rem;border-bottom:1px dashed var(--line)}
+.timeline time{font-family:var(--mono);font-size:.8125rem;color:var(--sun);font-variant-numeric:tabular-nums;padding-top:.15rem}
+.timeline strong{font-family:var(--display);font-weight:600;font-size:1.1rem}
+.timeline p{margin:.2rem 0 0;color:var(--muted);font-size:.9375rem}
+.timeline code{font-family:var(--mono);font-size:.8125rem;background:var(--river-soft);padding:.05rem .35rem;border-radius:4px;color:var(--ink)}
+
+/* habilidades */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1.5rem 2rem}
+.skills h3{font-family:var(--mono);font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.skills ul{list-style:none;margin:0;padding:0;display:grid;gap:.3rem}
+
+/* contato */
+.contact{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2rem;align-items:end}
+.contact h2{font-size:clamp(2rem,5vw,3.25rem);font-weight:700;letter-spacing:-.02em}
+.contact p{color:var(--muted);margin:1rem 0 0;max-width:34rem}
+.mail{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-top:1.5rem}
+.mail code{font-family:var(--mono);font-size:1rem;background:var(--surface);border:1px solid var(--line);padding:.6rem .85rem;border-radius:8px;user-select:all;word-break:break-all}
+.status{font-size:.875rem;color:var(--muted);min-height:1.2em}
+.socials{display:grid;gap:.5rem}
+.socials a{display:flex;justify-content:space-between;padding-block:.7rem;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);font-weight:500}
+.socials a span{color:var(--muted);font-family:var(--mono);font-size:.8125rem}
+.socials a:hover{color:var(--river)}
+footer{padding-top:2rem;color:var(--muted);font-size:.8125rem;font-family:var(--mono)}
+
+@media (max-width: 760px){
+  .hero,.feature,.contact{grid-template-columns:minmax(0,1fr)}
+  .timeline li{grid-template-columns:minmax(0,1fr);gap:.25rem}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="handle" href="#inicio">~/luciano-machado</a>
+    <nav aria-label="Seções">
+      <a href="#projetos">Projetos</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <div class="hero">
+      <div>
+        <p class="label">Borborema · SP · aberto a vagas júnior e estágio</p>
+        <h1>Luciano<br><span>Machado</span></h1>
+        <p class="role">Desenvolvedor full stack júnior · TypeScript, Node.js e React</p>
+        <p class="lead">Construo APIs REST com Fastify, Express e Prisma, com validação, filtros e autenticação, e interfaces em React que consomem essas APIs. Estudante de Ciência da Computação na UNIP, técnico em Desenvolvimento de Sistemas pela Etec e 146 h do curso JavaScript e TypeScript do básico ao avançado.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projetos">Ver projetos</a>
+          <a class="btn" href="https://github.com/LucianoMachadoS" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/luciano-machado-9253a1265/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="facts" aria-label="Resumo">
+        <div><span class="label">Back-end</span><strong>Node.js, Fastify, Express e Prisma</strong></div>
+        <div><span class="label">Front-end e mobile</span><strong>Next.js, React 19, React Native e TypeScript</strong></div>
+        <div><span class="label">Integrações</span><strong>Stripe, Clerk, OpenAI e Cloudinary</strong></div>
+      </div>
+    </div>
+
+    <section id="projetos" aria-labelledby="t-proj">
+      <div class="sec-head">
+        <h2 id="t-proj">Projetos</h2>
+        <span class="label">10 em destaque · 6 no ar</span>
+      </div>
+
+      <article class="feature">
+        <div>
+          <p class="label">Projeto principal · API + app mobile · código fechado</p>
+          <h3>PediAki</h3>
+          <p>App de delivery de comida com três perfis no mesmo aplicativo: cliente, restaurante e entregador. Projeto meu, iniciado no fim de 2025 e evoluído ao longo de 2026, com mais de 100 commits.</p>
+          <ul>
+            <li>Pedidos em tempo real com Socket.io: o restaurante recebe na hora e o cliente acompanha cada status</li>
+            <li>Pagamento via PIX com Asaas, confirmado por webhook, e preço recalculado no servidor</li>
+            <li>Segurança em camadas: JWT com refresh token, checagem de dono do recurso e RLS no PostgreSQL</li>
+            <li>App em Expo Router com telas por perfil, mapa com rota para o entregador e cache com TanStack Query</li>
+            <li>23 arquivos de teste com Vitest, documentação Swagger e deploy na Render com Supabase</li>
+          </ul>
+          <div class="tags"><span class="tag">Fastify</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">Socket.io</span><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Vitest</span></div>
+          <p class="private-note">🔒 Código fechado. Posso apresentar o projeto e o código em uma entrevista; peça uma demonstração pelo <a href="#contato">contato</a>.</p>
+        </div>
+        <div class="term" role="figure" aria-label="Fluxo de um pedido no PediAki">
+          <div class="bar"><i></i><i></i><i></i><span>pediaki · ciclo de um pedido</span></div>
+          <div class="body">
+            <table>
+              <tr><td class="m post">POST</td><td>/orders</td><td>cliente faz o pedido</td></tr>
+              <tr><td class="m post">WS</td><td>new_order</td><td>restaurante recebe na hora</td></tr>
+              <tr><td class="m post">POST</td><td>/asaas/webhook</td><td>PIX confirmado</td></tr>
+              <tr><td class="m put">PATCH</td><td>/orders/:id/status</td><td>PREPARANDO → PRONTO</td></tr>
+              <tr><td class="m get">GET</td><td>/orders/available</td><td>mural do entregador</td></tr>
+              <tr><td class="m put">PATCH</td><td>/orders/:id/assign</td><td>entregador aceita</td></tr>
+              <tr><td class="m post">WS</td><td>order_updated</td><td>ENTREGANDO → ENTREGUE</td></tr>
+            </table>
+          </div>
+          <div class="foot">$ npm test → 23 arquivos de teste com Vitest · docs em /docs</div>
+        </div>
+      </article>
+
+      <div class="grid" style="margin-top:2.5rem">
+        <article class="card">
+          <span class="label">Full stack · feito do zero</span>
+          <h3>CashFlow+</h3>
+          <p>Controle financeiro pessoal: entradas e saídas, saldo em tempo real e filtros por nome, tipo e período. API em Fastify com Zod e Prisma, front em React 19.</p>
+          <div class="tags"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Fastify</span><span class="tag">Prisma</span><span class="tag">Zod</span></div>
+          <div class="card-links"><a class="live" href="https://cash-flow-ten-omega.vercel.app/" target="_blank" rel="noopener">Ver no ar <small>Vercel</small></a><a href="https://github.com/LucianoMachadoS/cash-flow" target="_blank" rel="noopener">Front →</a><a href="https://github.com/LucianoMachadoS/cash-flow-api" target="_blank" rel="noopener">API →</a></div>
+        </article>
+        <article class="card">
+          <span class="label">Estudo guiado · Next.js · IA</span>
+          <h3>Finance AI</h3>
+          <p>SaaS de finanças com login, dashboard, assinatura pelo Stripe e relatório da OpenAI, construído acompanhando a Full Stack Week de Felipe Rocha (Full Stack Club), com correções próprias.</p>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">Clerk</span><span class="tag">Stripe</span><span class="tag">OpenAI</span></div>
+          <a href="https://github.com/LucianoMachadoS/finance-ai" target="_blank" rel="noopener">Código →</a>
+        </article>
+        <article class="card">
+          <span class="label">API REST · Node.js</span>
+          <h3>Escola API</h3>
+          <p>Gestão de alunos com login por token JWT, senhas com bcrypt, upload de fotos com Multer e banco versionado com Sequelize.</p>
+          <div class="tags"><span class="tag">Express</span><span class="tag">Sequelize</span><span class="tag">MySQL</span><span class="tag">JWT</span></div>
+          <div class="card-links"><a class="live" href="https://escola-api-q8tu.onrender.com/alunos" target="_blank" rel="noopener">Ver no ar <small>Render</small></a><a href="https://github.com/LucianoMachadoS/escola-api" target="_blank" rel="noopener">Código →</a></div>
+        </article>
+        <article class="card">
+          <span class="label">Web + mobile · uma API</span>
+          <h3>Previsão Climática</h3>
+          <p>Tempo atual de qualquer cidade e lista de favoritas. A mesma API em Fastify atende um site em React e um app em React Native.</p>
+          <div class="tags"><span class="tag">Fastify</span><span class="tag">Prisma</span><span class="tag">React</span><span class="tag">React Native</span><span class="tag">Expo</span></div>
+          <div class="card-links"><a class="live" href="https://front-wheather-8jf9bqy5e-luciano-machados-projects.vercel.app/" target="_blank" rel="noopener">Ver no ar <small>Vercel</small></a><a href="https://github.com/LucianoMachadoS/api-wheather" target="_blank" rel="noopener">API →</a><a href="https://github.com/LucianoMachadoS/front-wheather" target="_blank" rel="noopener">Web →</a><a href="https://github.com/LucianoMachadoS/previsao-climatica-mobile-front" target="_blank" rel="noopener">Mobile →</a></div>
+        </article>
+        <article class="card">
+          <span class="label">React · TypeScript</span>
+          <h3>Pomodoro Timer</h3>
+          <p>Alterna ciclos de trabalho e descanso com sons de aviso e mostra ciclos concluídos e horas trabalhadas. Relógio controlado por um hook próprio.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Hooks</span></div>
+          <a href="https://github.com/LucianoMachadoS/typescript-react-pomodoro" target="_blank" rel="noopener">Código →</a>
+        </article>
+        <article class="card">
+          <span class="label">Projeto em equipe · Etec</span>
+          <h3>Desbrave Borborema</h3>
+          <p>Site turístico com 9 pontos de Borborema, da Igreja Matriz à Praia do Juquetá, feito com o curso de Turismo Receptivo.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+          <div class="card-links"><a class="live" href="https://lucianomachados.github.io/desbrave-borborema/" target="_blank" rel="noopener">Ver no ar <small>GitHub Pages</small></a><a href="https://github.com/LucianoMachadoS/desbrave-borborema" target="_blank" rel="noopener">Código →</a></div>
+        </article>
+        <article class="card">
+          <span class="label">React</span>
+          <h3>Lista de Tarefas</h3>
+          <p>Adiciona, edita e apaga tarefas, sem aceitar repetidas, e mantém tudo salvo no navegador com localStorage.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">localStorage</span></div>
+          <div class="card-links"><a class="live" href="https://react-lista-tarefa.vercel.app/" target="_blank" rel="noopener">Ver no ar <small>Vercel</small></a><a href="https://github.com/LucianoMachadoS/React-Lista-Tarefa" target="_blank" rel="noopener">Código →</a></div>
+        </article>
+        <article class="card">
+          <span class="label">Consumo de API</span>
+          <h3>Pokédex</h3>
+          <p>Lista Pokémon da PokeAPI com tipos e arte oficial. Busca os detalhes em paralelo com Promise.all e carrega mais itens sob demanda.</p>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Fetch API</span><span class="tag">CSS</span></div>
+          <div class="card-links"><a class="live" href="https://lucianomachados.github.io/pokedex/" target="_blank" rel="noopener">Ver no ar <small>GitHub Pages</small></a><a href="https://github.com/LucianoMachadoS/pokedex" target="_blank" rel="noopener">Código →</a></div>
+        </article>
+        <article class="card">
+          <span class="label">Projeto Etec · multiusuário</span>
+          <h3>ETEC Money</h3>
+          <p>Controle financeiro com cadastro e login por JWT: cada usuário vê apenas as próprias transações. API em Fastify e telas em HTML com Tailwind.</p>
+          <div class="tags"><span class="tag">Fastify</span><span class="tag">Prisma</span><span class="tag">JWT</span><span class="tag">Tailwind</span></div>
+          <a href="https://github.com/LucianoMachadoS/etec-money" target="_blank" rel="noopener">Código →</a>
+        </article>
+      </div>
+      <p class="live-note">As APIs ficam na Render no plano gratuito: o primeiro acesso pode levar cerca de 1 minuto enquanto o servidor acorda.</p>
+    </section>
+
+    <section id="trajetoria" aria-labelledby="t-traj">
+      <div class="sec-head">
+        <h2 id="t-traj">Trajetória</h2>
+        <span class="label">a partir do histórico de commits</span>
+      </div>
+      <ol class="timeline">
+        <li><time datetime="2025-12">dez 2025 – jul 2026</time><div><strong>PediAki: delivery com API e app</strong><p>Maior projeto até agora: API em Fastify com tempo real, PIX e RLS, e app em Expo com três perfis de usuário.</p></div></li>
+        <li><time datetime="2026-01">jan 2026</time><div><strong>Ciência da Computação na UNIP</strong><p>Início do bacharelado, em paralelo aos projetos pessoais.</p></div></li>
+        <li><time datetime="2025-11">nov 2025</time><div><strong>Strapi publicado na AWS</strong><p>Blog com Strapi 5, PostgreSQL no Supabase e imagens no Cloudinary. Como o servidor não tinha memória para compilar o painel, o build é feito localmente e o servidor só executa.</p></div></li>
+        <li><time datetime="2025-08">ago–set 2025</time><div><strong>Pomodoro em React com TypeScript</strong><p>Hook próprio de intervalo, sons e estatísticas da sessão.</p></div></li>
+        <li><time datetime="2025-05">mai–jun 2025</time><div><strong>Previsão Climática: web e mobile</strong><p>Uma API em Fastify consumida por um site em React e um app em React Native com Expo.</p></div></li>
+        <li><time datetime="2025-03">mar–mai 2025</time><div><strong>CashFlow+, full stack com TypeScript</strong><p>API em Fastify com Prisma e Zod, e front em React 19 com Vite, construídos em paralelo em 22 commits.</p></div></li>
+        <li><time datetime="2025-02">fev–abr 2025</time><div><strong>Primeiro app em React Native</strong><p>Pokédex mobile com Expo e React Navigation: lista dos 151 Pokémon da primeira geração e tela de detalhes.</p></div></li>
+        <li><time datetime="2024-11">nov–dez 2024</time><div><strong>Finance AI e ETEC Money</strong><p>SaaS em Next.js com Stripe e OpenAI, acompanhando a Full Stack Week de Felipe Rocha, e API multiusuário em Fastify com JWT para a Etec.</p></div></li>
+        <li><time datetime="2024-10">out 2024</time><div><strong>API REST e React</strong><p>Escola API do zero, de <code>migrations</code> a upload de fotos, e primeira aplicação React com componentes.</p></div></li>
+        <li><time datetime="2024-09">set 2024</time><div><strong>JavaScript avançado e Node.js</strong><p>Início do curso <em>JavaScript e TypeScript do básico ao avançado</em> (Luiz Otávio Miranda, 146 h): orientação a objetos, Webpack, Express, MongoDB e, depois, React, TypeScript e Strapi.</p></div></li>
+        <li><time datetime="2024-08">ago 2024</time><div><strong>Primeira integração com API</strong><p>Pokédex consumindo a PokeAPI com <code>fetch</code> e paginação.</p></div></li>
+        <li><time datetime="2024-06">jun 2024</time><div><strong>Primeiro site publicado no GitHub</strong><p>Desbrave Borborema, em equipe, no curso técnico da Etec.</p></div></li>
+      </ol>
+    </section>
+
+    <section id="habilidades" aria-labelledby="t-hab">
+      <div class="sec-head"><h2 id="t-hab">Habilidades</h2></div>
+      <div class="skills">
+        <div><h3>Back-end</h3><ul><li>Node.js com Fastify e Express</li><li>TypeScript e validação com Zod</li><li>API REST, MVC, JWT e bcrypt</li><li>Strapi (CMS headless)</li></ul></div>
+        <div><h3>Banco de dados</h3><ul><li>PostgreSQL e MySQL</li><li>Prisma e Sequelize (migrations)</li><li>MongoDB com Mongoose</li><li>Neon e Supabase</li></ul></div>
+        <div><h3>Front-end</h3><ul><li>Next.js (App Router, Server Actions)</li><li>React 19, Hooks e Context API</li><li>React Native com Expo</li><li>Tailwind e shadcn/ui</li><li>Recharts e React Hook Form</li></ul></div>
+        <div><h3>Integrações</h3><ul><li>Stripe (checkout e webhooks)</li><li>Clerk (autenticação)</li><li>OpenAI API</li><li>Cloudinary</li></ul></div>
+        <div><h3>Ferramentas</h3><ul><li>Git e GitHub</li><li>ESLint, Prettier e Husky</li><li>Vite e Webpack</li><li>Deploy na AWS e Docker Compose</li></ul></div>
+      </div>
+    </section>
+
+    <section id="contato" aria-labelledby="t-cont">
+      <div class="contact">
+        <div>
+          <h2 id="t-cont">Vamos conversar?</h2>
+          <p>Procuro minha primeira vaga como desenvolvedor júnior ou estágio, presencial na região ou remoto.</p>
+          <div class="mail">
+            <code id="email">lucianoomachados@gmail.com</code>
+            <button class="btn" id="copy" type="button">Copiar e-mail</button>
+          </div>
+          <p class="status" id="copy-status" aria-live="polite"></p>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/LucianoMachadoS" target="_blank" rel="noopener">GitHub <span>@LucianoMachadoS</span></a>
+          <a href="https://www.linkedin.com/in/luciano-machado-9253a1265/" target="_blank" rel="noopener">LinkedIn <span>luciano-machado</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Luciano Machado · feito com HTML e CSS</footer>
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy'), out=document.getElementById('copy-status'), el=document.getElementById('email');
+  btn.addEventListener('click',function(){
+    var text=el.textContent.trim();
+    function fallback(){
+      var r=document.createRange(); r.selectNodeContents(el);
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      out.textContent='E-mail selecionado. Use Ctrl+C para copiar.';
+    }
+    try{
+      navigator.clipboard.writeText(text).then(function(){out.textContent='E-mail copiado.';},fallback);
+    }catch(e){fallback();}
+  });
+})();
+</script>
+</body>
+</html>
